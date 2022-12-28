@@ -33,9 +33,7 @@ jobs:
            pip install imagesize
            
     - name: Run Bot
-      run: 
-           cat List.data
-           python RunBot-Alpha.py List.data
+      run: python RunBot-Alpha.py List.data
     - name: Failure test
       if: failure()
       run: | 
