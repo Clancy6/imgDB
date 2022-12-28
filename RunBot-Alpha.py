@@ -42,7 +42,7 @@ def getImg(path):#网上抄的
 if __name__ == '__main__':
     #ListFile = sys.argv[1]
     ListFile = "List.data"
-    for path_i in range(len(fread(ListFile))):
+    for path_i in range(len(fread(ListFile))-1):
         with open(str(path_i+1)+'.html', 'w') as f:
             f.write("")
     HTML = """
@@ -72,7 +72,7 @@ if __name__ == '__main__':
     """
     i=1
     #for path in fread(ListFile):
-    for path_i in range(len(fread(ListFile))):
+    for path_i in range(len(fread(ListFile))-1):
         path = fread(ListFile)[path_i]
         for imgPath in getImg(path):
             w, h = imagesize.get(imgPath)#350,
