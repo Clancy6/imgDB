@@ -31,8 +31,6 @@ jobs:
            pip install datetime
            pip install pytest-shutil
            pip install imagesize
-           pip install urllib
-           pip install sys
            
     - name: Run Bot
       run: 
