@@ -7,7 +7,7 @@ import urllib.parse
 
 
 """
-pip install shutil
+pip install pytest-shutil
 pip install imagesize
 pip install urllib
 """
