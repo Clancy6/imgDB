@@ -2,9 +2,9 @@ name: "imgBot"
 
 
 on:
-  #schedule:
-  #  - cron:  '0 0 * * *'
-  #push:
+  schedule:
+    - cron:  '0 0 * * *'
+  push:
   
 env:
   ACTIONS_ALLOW_UNSECURE_COMMANDS: true
@@ -21,7 +21,7 @@ jobs:
 
     - name: Clear Previous
       run: |
-        rm -f -- index.html
+        #rm -f -- index.html
     - name: Setup Python environment
       uses: actions/setup-python@v1.1.1 
     - name: Install Dependence
@@ -29,8 +29,15 @@ jobs:
            pip install yagmail
            pip install urllib3
            pip install datetime
+           pip install shutil
+           pip install imagesize
+           pip install urllib
+           pip install sys
+           
     - name: Run Bot
-      run: python RunBot-Alpha.py list.data
+      run: 
+           cat List.data
+           python RunBot-Alpha.py List.data
     - name: Failure test
       if: failure()
       run: | 
