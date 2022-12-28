@@ -1,0 +1,38 @@
+name: "imgBot"
+
+
+on:
+  #schedule:
+  #  - cron:  '0 0 * * *'
+  #push:
+  
+env:
+  ACTIONS_ALLOW_UNSECURE_COMMANDS: true
+
+jobs:
+  job_1:
+    name: Python Crawler
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        ref: main 
+
+    - name: Clear Previous
+      run: |
+        rm -f -- index.html
+    - name: Setup Python environment
+      uses: actions/setup-python@v1.1.1 
+    - name: Install Dependence
+      run: pip install requests
+           pip install yagmail
+           pip install urllib3
+           pip install datetime
+    - name: Run Bot
+      run: python RunBot-Alpha.py list.data
+    - name: Failure test
+      if: failure()
+      run: | 
+        ls
+        echo "Error on running!"
