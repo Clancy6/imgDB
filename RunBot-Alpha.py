@@ -40,7 +40,8 @@ def getImg(path):#网上抄的
                     yield pa
 
 if __name__ == '__main__':
-    ListFile = sys.argv[1]
+    #ListFile = sys.argv[1]
+    ListFile = "List.data"
     for path_i in range(len(fread(ListFile))):
         with open(str(path_i+1)+'.html', 'w') as f:
             f.write("")
