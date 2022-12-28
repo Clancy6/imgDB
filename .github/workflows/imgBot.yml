@@ -29,7 +29,7 @@ jobs:
            pip install yagmail
            pip install urllib3
            pip install datetime
-           pip install shutil
+           pip install pytest-shutil
            pip install imagesize
            pip install urllib
            pip install sys
