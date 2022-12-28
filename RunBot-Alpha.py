@@ -9,7 +9,6 @@ import urllib.parse
 """
 pip install pytest-shutil
 pip install imagesize
-pip install urllib
 """
 
 def fread(f):#逐行读取文件
