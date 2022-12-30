@@ -36,20 +36,21 @@ def get_path_file(files_path):
     return data
 
 def getImg(path):#借鉴网上的
-    Type = ['jpg','jieg','png','bmp','gif','webp','JPG','JPEG','PNG','BMP','GIF','WEBP','Gif']
-    # 返回指定路径的文件夹名称
-    dirs = os.listdir(path)
-    # 循环遍历该目录下的照片
-    for dir in dirs:
-        # 拼接字符串
-        pa = path+dir
-        # 判断是否为照片
-        if not os.path.isdir(pa):
-            for imgType in Type:
-                if(os.path.splitext(os.path.basename(pa))[-1][1:] == imgType):
-                    # 使用生成器循环输出
-                    yield pa
-    if(os.path.splitext(os.path.basename(path))[-1][1:] == "pid_data"):
+    if(not "http" in path):
+        Type = ['jpg','jieg','png','bmp','gif','webp','JPG','JPEG','PNG','BMP','GIF','WEBP','Gif']
+        # 返回指定路径的文件夹名称
+        dirs = os.listdir(path)
+        # 循环遍历该目录下的照片
+        for dir in dirs:
+            # 拼接字符串
+            pa = path+dir
+            # 判断是否为照片
+            if not os.path.isdir(pa):
+                for imgType in Type:
+                    if(os.path.splitext(os.path.basename(pa))[-1][1:] == imgType):
+                        # 使用生成器循环输出
+                        yield pa
+    elif(os.path.splitext(os.path.basename(path))[-1][1:] == "pid_data"):
         for piximg_id in range(len(webget(path).split("\n"))):
             if(len(str(webget(path).split("\n")[pximg_id]))>5):
                 yield("https://xn--kiv39c36evrb.eu.org/api/pixiv/pixiv.php?master=0&pid="+str(webget(path).split("\n")[pximg_id]))
