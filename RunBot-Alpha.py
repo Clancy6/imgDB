@@ -4,12 +4,23 @@ import sys
 import imagesize
 import shutil
 import urllib.parse
+import requests
 
 
 """
 pip install pytest-shutil
 pip install imagesize
+pip install requests
 """
+
+def webget(f):
+    headers={
+        'User-Agent':"Mozilla/5.0 (Linux; Android 8.1.0; ikun) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Mobile Safari/537.36",
+    }
+    res = requests.get(str(f), headers=headers, verify=False)#取消网站CA证书验证
+    #res = requests.get(str(f), headers=headers)
+    res.encoding = 'utf-8'
+    return(res.text)
 
 def fread(f):#逐行读取文件
     with open(f, encoding='utf-8') as file_obj:
@@ -24,7 +35,7 @@ def get_path_file(files_path):
             data.append(f_p)
     return data
 
-def getImg(path):#网上抄的
+def getImg(path):#借鉴网上的
     Type = ['jpg','jieg','png','bmp','gif','webp','JPG','JPEG','PNG','BMP','GIF','WEBP','Gif']
     # 返回指定路径的文件夹名称
     dirs = os.listdir(path)
@@ -38,9 +49,10 @@ def getImg(path):#网上抄的
                 if(os.path.splitext(os.path.basename(pa))[-1][1:] == imgType):
                     # 使用生成器循环输出
                     yield pa
-            if(os.path.splitext(os.path.basename(pa))[-1][1:] == "pid_data"):
-                for piximg_id in fread(pa):
-                    yield("https://xn--kiv39c36evrb.eu.org/api/pixiv/pixiv.php?master=0&pid="+piximg_id)
+    if(os.path.splitext(os.path.basename(path))[-1][1:] == "pid_data"):
+        for piximg_id in range(len(webget(path).split("\n"))):
+            if(len(str(webget(path).split("\n")[pximg_id]))>5):
+                yield("https://xn--kiv39c36evrb.eu.org/api/pixiv/pixiv.php?master=0&pid="+str(webget(path).split("\n")[pximg_id]))
 
 if __name__ == '__main__':
     #ListFile = sys.argv[1]
