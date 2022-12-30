@@ -91,8 +91,8 @@ if __name__ == '__main__':
     for path_i in range(len(fread(ListFile))-1):
         path = fread(ListFile)[path_i]
         for imgPath in getImg(path):
-            w, h = imagesize.get(imgPath)#350,
-            h1 = int(350*int(h)/int(w))#保持纵横比缩放
+            #w, h = imagesize.get(imgPath)#350,
+            #h1 = int(350*int(h)/int(w))#保持纵横比缩放
             imgPath = imgPath.replace("\\", "\/")#替换\为/
             #'<a href="%s" target="_blank"><img src="%s" alt="%s" width="150" height="150"></a>\n'%(imgPath, imgPath ,imgPath)
             #img_HTML = '<center><a href="%s" target="_blank"><img src="%s" alt="%s" width="%d" height="%d"></a></center>\n<!-- $imgPath -->'%(imgPath, imgPath ,imgPath, int(w), h1)
