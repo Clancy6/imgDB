@@ -50,10 +50,10 @@ def getImg(path):#借鉴网上的
                     if(os.path.splitext(os.path.basename(pa))[-1][1:] == imgType):
                         # 使用生成器循环输出
                         yield pa
-    elif(os.path.splitext(os.path.basename(path))[-1][1:] == "pid_data"):
-        for piximg_id in range(len(webget(path).split("\n"))):
-            if(len(str(webget(path).split("\n")[piximg_id]))>5):
-                yield("https://xn--kiv39c36evrb.eu.org/api/pixiv/pixiv.php?master=0&pid="+str(webget(path).split("\n")[piximg_id]))
+    #elif(os.path.splitext(os.path.basename(path))[-1][1:] == "pid_data"):
+    #    for piximg_id in range(len(webget(path).split("\n"))):
+    #        if(len(str(webget(path).split("\n")[piximg_id]))>5):
+    #            yield("https://xn--kiv39c36evrb.eu.org/api/pixiv/pixiv.php?master=0&pid="+str(webget(path).split("\n")[piximg_id]))
 
 if __name__ == '__main__':
     #ListFile = sys.argv[1]
