@@ -103,3 +103,5 @@ if __name__ == '__main__':
         with open(str(path_i+1)+'.html', 'a', encoding= "utf-8") as f:
             f.write(HTML)
         print("Successfully.")
+
+	
