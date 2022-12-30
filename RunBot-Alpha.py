@@ -38,6 +38,9 @@ def getImg(path):#网上抄的
                 if(os.path.splitext(os.path.basename(pa))[-1][1:] == imgType):
                     # 使用生成器循环输出
                     yield pa
+            if(os.path.splitext(os.path.basename(pa))[-1][1:] == "pid_data"):
+                for piximg_id in fread(pa):
+                    yield("https://xn--kiv39c36evrb.eu.org/api/pixiv/pixiv.php?master=0&pid="+piximg_id)
 
 if __name__ == '__main__':
     #ListFile = sys.argv[1]
